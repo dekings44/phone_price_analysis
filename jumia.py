@@ -19,9 +19,9 @@ for page in range(1, 20):
     soup = BeautifulSoup(response.content, "html.parser")
 
     # Extract the phone names and prices using BeautifulSoup
-    for item in soup.find_all("div", {"class": "core"}):
-        names.append(item.find("a", {"class": "core"}).text)
-        prices.append(item.find("span", {"class": "price"}).text)
+    for item in soup.find_all("div", {"class": "info"}):
+        names.append(item.find("h3", {"class": "name"}).text)
+        prices.append(item.find("div", {"class": "prc"}).text)
 
 # Create a dataframe from the extracted data
 data = {"Name": names, "Price": prices}
