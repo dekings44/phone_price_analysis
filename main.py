@@ -5,6 +5,7 @@ import requests
 from bs4 import BeautifulSoup
 from time import sleep
 from random import randint
+import json
 
 
 #Declaring the headers 
@@ -12,14 +13,14 @@ headers = {'User-Agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWe
 
 url = 'https://www.konga.com/search?search=phones&page=1'
 
-res = requests.get(url, headers = headers)
+res = requests.get(url, headers = headers).json()
 
-print(res)
+print(json.dump(res))
 
-soup = BeautifulSoup(res.text, 'html.parser')
+# soup = BeautifulSoup(res, 'lxml')
 
-
-phone_desc = soup.find_all('div', {'class': 'af885_1iPzH'})
-print(phone_desc)
-disc = [name.text for name in phone_desc]
-print(disc)
+# print(soup.text)
+# phone_desc = soup.find_all('div', {'class': 'af885_1iPzH'})
+# print(phone_desc)
+# disc = [name.text for name in phone_desc]
+# print(disc)
