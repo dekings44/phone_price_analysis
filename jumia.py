@@ -10,7 +10,7 @@ prices = []
 base_url = "https://www.jumia.com.ng/catalog/?q=android+phones&page="
 
 # A loop to scrape all pages
-for page in range(1, 20):
+for page in range(1, 50):
     # Construct the full URL
     url = base_url + str(page)
 
@@ -26,6 +26,7 @@ for page in range(1, 20):
 # Create a dataframe from the extracted data
 data = {"Name": names, "Price": prices}
 df = pd.DataFrame(data)
+df.to_csv('jumia_data.csv')
 
 # Show the first 5 rows of the dataframe
 print(df.head())
